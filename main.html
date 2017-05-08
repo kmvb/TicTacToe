@@ -4,12 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Tic Tac Tow</title>
+    <link href="https://fonts.googleapis.com/css?family=Inknut+Antiqua" rel="stylesheet">
+    <title>Tic Tac Toe</title>
     <style>
 
         body{
             width: 550px;
             margin: auto;
+            font-family: 'Inknut Antiqua', serif;
         }
         .square{
             height: 80px;
@@ -21,9 +23,14 @@
         h2{
             border-bottom: 2px solid black;
         }
+        #startover {
+            font-size: 18px;
+            text-decoration: none;
+            color: black;
+        }
     </style>
 </head>
-<body onLoad='startGame();'>
+<body onload='startGame();'>
     <h1>TIC TAC TOE</h1>
     <h2>in Javascript</h2>
     <div id="message">message here</div>
@@ -44,7 +51,7 @@
             <td class='square' id='s9' onClick='nextMove(this)'></td>
         </tr>
     </table>
-
+    <a href='javascript: startGame();' id='startover'>Start Over</a>     
     <script src='main.js'>
 
     </script>

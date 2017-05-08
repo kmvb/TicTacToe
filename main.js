@@ -1,15 +1,21 @@
-console.log('this is working');
 
 function startGame() {
+
+    for (var i = 1; i<=9; i++){
+        clearBox(i);
+    }
     document.turn = 'X';
-    setMessage(document.turn + 'gets to start')
+    document.winner = null;
+    setMessage(document.turn + ' gets to start')
 }
 
 function setMessage(msg){
     document.getElementById('message').innerText = msg;
 }
 function nextMove(square){
-    if(square.innerText === ''){
+    if(document.winner != null){
+        setMessage(document.turn + ' already won.')
+    } else if(square.innerText === ''){
     square.innerText = document.turn;
     switchTurn();    
     } else {
@@ -20,7 +26,8 @@ function nextMove(square){
 
 function switchTurn() {
     if(checkForWinner(document.turn)){
-        setMessage('Congrats ' + document.turn + 'you won')
+        setMessage('Congrats ' + document.turn + ' you won');
+        document.winner = document.turn;
     } else if (document.turn === 'X') {
         document.turn = 'O'
          setMessage("It's " + document.turn + "'s turn");
@@ -39,11 +46,10 @@ function checkForWinner(move){
        checkBox(2,5,8, move) ||
        checkBox(3,6,9, move) ||
        checkBox(1,5,9, move) ||
-       checkBox(3,5,7, move) ||){
+       checkBox(3,5,7, move)){
            result = true
        }
        return result;
-    )
 }
 function checkBox(a, b, c, move){
     var result = false;
@@ -54,4 +60,8 @@ function checkBox(a, b, c, move){
 }
 function getBox(number){
     return document.getElementById('s' + number).innerText;
+}
+
+function clearBox(number){
+    document.getElementById('s' + number).innerText = '';
 }
